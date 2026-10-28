@@ -11,15 +11,20 @@ const Book3D = forwardRef(function Book3D(_, ref) {
         <div className="book-pages" />
         <div className="book-face book-front">
           <svg viewBox="0 0 200 300" preserveAspectRatio="none" aria-hidden="true">
-            <g stroke="rgba(244,237,225,.35)" strokeWidth=".5" fill="none">
-              <path d="M20 70 L70 40 L120 80 L170 50 M70 40 L90 120 L120 80 M20 70 L50 130 L90 120 L150 140 L170 50 M50 130 L40 190 L100 175 L150 140 L180 200 M100 175 L90 120 M40 190 L110 240 L180 200 L100 175" />
-            </g>
-            <g fill="#f6c177">
-              {[[20,70],[70,40],[120,80],[170,50],[90,120],[50,130],[150,140],[40,190],[100,175],[180,200],[110,240]].map(([x,y],i)=>(
-                <circle key={i} cx={x} cy={y} r={i % 3 ? 1.6 : 2.6} opacity={i % 2 ? .7 : 1} />
-              ))}
-            </g>
-            <circle cx="100" cy="312" r="70" fill="rgba(246,193,119,.35)" />
+            <defs>
+              <radialGradient id="bk-sun" cx="0.62" cy="0.775" r="0.5">
+                <stop offset="0" stopColor="#ffe2b0" stopOpacity="1" />
+                <stop offset=".08" stopColor="#f6b97a" stopOpacity=".9" />
+                <stop offset=".35" stopColor="#d9705a" stopOpacity=".35" />
+                <stop offset="1" stopColor="#d9705a" stopOpacity="0" />
+              </radialGradient>
+              <linearGradient id="bk-limb" x1="0" x2="1"><stop offset="0" stopColor="#6f74ff" stopOpacity=".5" /><stop offset=".6" stopColor="#ffc98a" /><stop offset="1" stopColor="#ff9f7a" stopOpacity=".6" /></linearGradient>
+            </defs>
+            <rect width="200" height="300" fill="url(#bk-sun)" />
+            <path d="M-40 300 Q100 196 240 300 Z" fill="#05061a" />
+            <path d="M-40 300 Q100 196 240 300" fill="none" stroke="url(#bk-limb)" strokeWidth="1.2" />
+            <g fill="#f4ede1">{[[30,40,.5],[160,30,.7],[120,70,.4],[60,110,.6],[178,120,.4],[20,160,.5],[96,22,.5]].map(([x,y,o],i)=><circle key={i} cx={x} cy={y} r=".7" opacity={o} />)}</g>
+            <ellipse cx="100" cy="150" rx="78" ry="78" fill="none" stroke="rgba(244,237,225,.14)" strokeWidth=".4" />
           </svg>
           <div className="cover-text">
             <div className="cover-kicker">A novelette</div>

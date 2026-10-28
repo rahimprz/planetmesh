@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import Lenis from 'lenis'
 import { gsap, ScrollTrigger, useGSAP, lenisRef, reduceMotion } from './scroll'
-import MeshCanvas from './components/MeshCanvas'
+import Sky from './components/Sky'
 import Loader from './components/Loader'
-import Cursor from './components/Cursor'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Marquee from './components/Marquee'
@@ -12,6 +11,7 @@ import Pillars from './components/Pillars'
 import Origin from './components/Origin'
 import MetaMesh from './components/MetaMesh'
 import Library from './components/Library'
+import Verse from './components/Verse'
 import GetBook from './components/GetBook'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -39,15 +39,10 @@ export default function App() {
     else { lenisRef.current?.start(); document.documentElement.style.overflow = ''; ScrollTrigger.refresh() }
   }, [ready])
 
-  // Night → dawn sky across the whole page
+  // Night → dawn: page progress drives the sunrise in the Sky shader
   useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: { trigger: 'main', start: 'top top', end: 'bottom bottom', scrub: 1.2,
-        onUpdate: (s) => { dawn.current = s.progress } },
-    })
-    tl.to('.sky-dusk', { opacity: 1, ease: 'none', duration: 1 })
-      .to('.sky-dawn', { opacity: 0.95, ease: 'none', duration: 1.2 }, '-=.2')
-      .to('.sky-sun', { opacity: 1, bottom: '-34vmax', ease: 'none', duration: 1 }, '-=.9')
+    ScrollTrigger.create({ trigger: 'main', start: 'top top', end: 'bottom bottom',
+      onUpdate: (s) => { dawn.current = s.progress } })
   }, { scope: root })
 
   useEffect(() => {
@@ -59,13 +54,10 @@ export default function App() {
 
   return (
     <div ref={root}>
-      <div className="sky" aria-hidden="true">
-        <div className="sky-dusk" /><div className="sky-dawn" /><div className="sky-sun" />
-      </div>
-      <MeshCanvas dawn={dawn} />
-      <div className="grain" aria-hidden="true" />
+      <div className="sky" aria-hidden="true" />
+      <Sky dawn={dawn} />
+      <div className="veil" aria-hidden="true" />
       {!reduceMotion && <Loader onDone={() => setReady(true)} />}
-      <Cursor />
       <Nav ready={ready} />
       <main id="top">
         <Hero ready={ready} />
@@ -76,6 +68,7 @@ export default function App() {
         <MetaMesh />
         <Library />
         <GetBook />
+        <Verse />
         <Contact />
       </main>
       <Footer />

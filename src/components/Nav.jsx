@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { gsap, useGSAP, scrollToId } from '../scroll'
 import { LINKS } from '../content'
 
-const items = [['story', 'The Story', 'opt'], ['library', 'Reading', 'opt'], ['contact', 'Contact', '']]
+const items = [['story', 'Planet Mesh', 'opt'], ['verse', 'Lyrical Verse', 'opt'], ['contact', 'Contact', '']]
 
 export default function Nav({ ready }) {
   const ref = useRef(null)

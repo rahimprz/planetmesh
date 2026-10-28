@@ -12,18 +12,17 @@ export default function MetaMesh() {
       .from('.mm-ring', { scale: .2, opacity: 0, stagger: .08, duration: .5 }, 0)
       .from('.mm-kicker', { y: 40, opacity: 0, duration: .3 }, .1)
       .from('.mm-word', { scale: .55, opacity: 0, letterSpacing: '0.25em', duration: .5 }, .2)
-      .to('.mm-word', { backgroundPosition: '-160% 0', duration: .7, ease: 'none' }, .45)
       .from('.mm-desc', { y: 30, opacity: 0, duration: .3 }, .55)
       .to('.mm-orbits', { scale: 1.3, duration: 1, ease: 'none' }, 0)
   }, { scope: ref })
   return (
     <section className="mm" ref={ref}>
       <div className="mm-orbits" aria-hidden="true">
-        {rings.map(([s, c]) => <div className="mm-ring" key={c} style={{ width: s, height: s }}><i style={{ background: c, boxShadow: `0 0 16px ${c}` }} /></div>)}
+        {rings.map(([s, c]) => <div className="mm-ring" key={c} style={{ width: s, height: s }}><i style={{ background: c }} /></div>)}
       </div>
       <div className="mm-inner">
         <p className="mm-kicker">The true protagonist is not a single human hero.</p>
-        <div className="mm-word">MetaMesh</div>
+        <div className="mm-word">Meta<em>Mesh</em></div>
         <p className="mm-desc">It is the network itself — an evolving, emergent composition.</p>
       </div>
     </section>

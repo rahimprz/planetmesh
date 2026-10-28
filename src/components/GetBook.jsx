@@ -16,12 +16,12 @@ export default function GetBook() {
   return (
     <section className="get" id="book" ref={ref}>
       <div className="wrap">
-        <Eyebrow>The novelette</Eyebrow>
+        <Eyebrow>Open-source copy for review</Eyebrow>
         <MaskTitle lines={['Enter the', <em key="m">Mesh.</em>]} />
-        <Rise as="p" className="lead">Read <em>Planet Mesh</em> online, or purchase a copy from your favorite store.</Rise>
+        <Rise as="p" className="lead">The novelette, <em>Planet Mesh</em>, is open for review. Read it free online — or purchase a copy.</Rise>
         <Rise className="get-cta">
-          <a className="btn btn--solid" href={LINKS.read} target="_blank" rel="noopener">Read online <span className="arrow">→</span></a>
-          <a className="btn" href={LINKS.purchase} target="_blank" rel="noopener">Purchase <span className="arrow">→</span></a>
+          <a className="btn btn--solid" href={LINKS.read} target="_blank" rel="noopener">Read the open-source copy <span className="arrow">→</span></a>
+          <a className="btn" href={LINKS.purchase} target="_blank" rel="noopener">Or purchase <span className="arrow">→</span></a>
         </Rise>
         <Rise><span className="soon"><i />Files coming soon</span></Rise>
       </div>

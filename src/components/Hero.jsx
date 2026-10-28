@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { gsap, useGSAP, reduceMotion } from '../scroll'
-import { LINKS } from '../content'
+import { LINKS, TAGLINE } from '../content'
 import Book3D from './Book3D'
 
 const chars = (w) => [...w].map((c, i) => <span className="char" key={i}>{c}</span>)
@@ -47,9 +47,9 @@ export default function Hero({ ready }) {
             <span className="row" aria-hidden="true">{chars('Planet')}</span>
             <span className="row" aria-hidden="true">{chars('Mesh.')}</span>
           </h1>
-          <p className="hero-sub">Dawn's Early Message — a lyrical exploration of humanity.</p>
+          <p className="hero-sub">{TAGLINE[0]} <span>{TAGLINE[1]}</span></p>
           <div className="hero-cta">
-            <a className="btn btn--solid" href={LINKS.read} target="_blank" rel="noopener">Read the novelette <span className="arrow">→</span></a>
+            <a className="btn btn--solid" href={LINKS.read} target="_blank" rel="noopener">Read the open-source copy <span className="arrow">→</span></a>
             <a className="btn" href={LINKS.purchase} target="_blank" rel="noopener">Purchase <span className="arrow">→</span></a>
           </div>
         </div>

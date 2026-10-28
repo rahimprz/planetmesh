@@ -5,8 +5,8 @@ export default function Origin() {
     <section>
       <div className="wrap origin-grid">
         <div className="origin-sticky">
-          <Eyebrow>The origin</Eyebrow>
-          <MaskTitle lines={['An emergent', <em key="c">cry.</em>]} />
+          <Eyebrow>About the author</Eyebrow>
+          <MaskTitle lines={['Tuning to', <em key="c">the Network.</em>]} />
         </div>
         <div className="origin-copy">
           <Rise as="p">The creation of <em>Planet Mesh</em> stems from a deep, emergent cry to dismantle our modern, disembodied isolation. For too long, humanity has surrendered its attention to centralized corporate platforms and rigid binary screens.</Rise>
